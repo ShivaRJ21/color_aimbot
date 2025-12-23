@@ -19,7 +19,11 @@ pip install -r requirements.txt
 
 ## How to Run the Script:
 Run aimbot.py silently using the following command:
-```
+```bash
 pythonw.exe aimbot.py
 ```
+
+Aimbot triggers with Right Click
+
+Middle-Mouse button to end the Script
 
