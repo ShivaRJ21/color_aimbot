@@ -1,5 +1,5 @@
 # color_aimbot
-Simple AHK-like color aimbot script in python, as my first non-course project
+Simple AHK-like color aimbot(currently only for Krunker) script in python, as my first non-course project
 
 ## Requirements:
 To run this program, you'll need to install the following libraries:
