@@ -23,6 +23,7 @@ Run aimbot.py silently using the following command:
 pythonw.exe aimbot.py
 ```
 
+## Functioning:
 Aimbot triggers with Right Click
 
 Middle-Mouse button to end the Script
