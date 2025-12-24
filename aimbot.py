@@ -23,6 +23,7 @@ UPPER_BOUND = numpy.array([TARGET_COLOR[0] + COLOR_TOLERENCE, TARGET_COLOR[1] + 
 LOWER_BOUND = numpy.array([TARGET_COLOR[0] - COLOR_TOLERENCE, TARGET_COLOR[1] - COLOR_TOLERENCE, TARGET_COLOR[2] - COLOR_TOLERENCE])
 OFFSET_X = 42 #42 
 OFFSET_Y = 30 #30 
+LERP = 0.3
 SKIP = 4
 PID = win32api.GetCurrentProcessId()
 PROCESS = psutil.Process(PID)
@@ -55,6 +56,18 @@ def move_mouse(target):
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, int(move_x+1), int(move_y+1), 0, 0) # +1 to round it up
     
 
+def move_mouse_lerp(target):
+    target_x, target_y = target[0] + OFFSET_X, target[1] + OFFSET_Y
+
+    lerp_x = MID_X * (1 - LERP) + target_x * LERP
+    lerp_y = MID_Y * (1 - LERP) + target_y * LERP
+
+    move_x = lerp_x - MID_X
+    move_y = lerp_y - MID_Y
+
+    win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, int(move_x), int(move_y), 0, 0) # +1 to round it up
+
+
 def move_if_running():
     global exit_program
     global moving
@@ -63,7 +76,7 @@ def move_if_running():
         while moving.value:
             target = scan_screen()
             if target:
-                move_mouse(target)
+                move_mouse_lerp(target)
 
 
 def check_input_listener(exit_program, moving):
