@@ -1,4 +1,4 @@
-# This is super easy to do in AHK, but I'm only doing this, becaue I wanted to make an easy first non-course Project, Logic inspired by an AHK script from unknowncheats
+# This is super easy to do in AHK, but I'm only doing this because I wanted to make an easy first non-course Project. Logic inspired by an AHK script from unknowncheats
 
 import pyautogui
 import numpy
@@ -53,6 +53,12 @@ def move_mouse(target):
     move_y = sqrt(abs(relative_y)) if relative_y > 0 else -sqrt(abs(relative_y))
 
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, int(move_x+1), int(move_y+1), 0, 0) # +1 to round it up
+
+
+def lerp(target):
+    target_x, target_y = target[0] + OFFSET_X, target[1] + OFFSET_Y
+
+    
     
 
 def move_if_running():
