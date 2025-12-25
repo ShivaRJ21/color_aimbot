@@ -23,7 +23,7 @@ UPPER_BOUND = numpy.array([TARGET_COLOR[0] + COLOR_TOLERENCE, TARGET_COLOR[1] + 
 LOWER_BOUND = numpy.array([TARGET_COLOR[0] - COLOR_TOLERENCE, TARGET_COLOR[1] - COLOR_TOLERENCE, TARGET_COLOR[2] - COLOR_TOLERENCE])
 OFFSET_X = 42 #42 
 OFFSET_Y = 30 #30 
-LERP = 0.2
+SMOOTHNESS = 0.2
 SKIP = 4
 PID = win32api.GetCurrentProcessId()
 PROCESS = psutil.Process(PID)
@@ -54,8 +54,8 @@ def move_mouse(target):
         move_x = sqrt(abs(relative_x)) if relative_x > 0 else -sqrt(abs(relative_x)) # kinda snappy
         move_y = sqrt(abs(relative_y)) if relative_y > 0 else -sqrt(abs(relative_y))
     else:
-        move_x = (target_x - MID_X) * LERP # smooth
-        move_y = (target_y - MID_Y) * LERP
+        move_x = (target_x - MID_X) * SMOOTHNESS # smooth
+        move_y = (target_y - MID_Y) * SMOOTHNESS
 
     win32api.mouse_event(win32con.MOUSEEVENTF_MOVE, int(move_x+1), int(move_y+1), 0, 0) # +1 to round it up, as int() rounds it down technically
 
